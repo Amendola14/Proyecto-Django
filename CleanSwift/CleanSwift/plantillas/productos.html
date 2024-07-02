@@ -1,0 +1,31 @@
+{% extends "headeryfooter.html" %}
+
+{% block content %}
+<ul class="nav justify-content-center">
+    {% for c in categorias %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'productos_filtrados' c.nombre %}">{{ c|upper }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="container mt-4">
+    <div class="row">
+        {% for producto in productos %}
+            {% if producto.activo %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{producto.titulo}}+img" height="300px" style="aspect-ratio: 1/2; width: 300px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.titulo}}</h5>
+                            <p class="card-text">N°: {{producto.numero}}</p>
+                            <p class="card-text">${{producto.precio}}</p>
+                            <a href="{% url 'carro_agregar' producto.id %}" class="btn btn-primary">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

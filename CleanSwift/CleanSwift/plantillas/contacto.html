@@ -1,0 +1,85 @@
+{% extends "headeryfooter.html" %}
+
+{% block content %}
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+ 
+    <div class="container">
+        <div class="row">
+            <!-- Columna para la imagen -->
+            <div class="col-md-6">
+                <img src="https://www.hubspot.com/hubfs/media/funcionesdepartamentomarketing.jpeg" class="img-fluid" alt="Imagen nueva" style="max-width: 100%;">
+            </div>
+            <!-- Columna para los párrafos -->
+            <div class="col-md-6">
+                <h1>Contacto</h1>
+                
+                
+                <p>
+                    ¿Por qué contactarnos? En CleanSwift, estamos aquí para resolver cualquier consulta que tengas sobre nuestros productos o servicios. Nuestro equipo está comprometido a proporcionarte la mejor asistencia posible, asegurándonos de que cada interacción contigo sea útil y satisfactoria.
+                </p>
+                <p>
+                    Beneficios para ti: Al elegir CleanSwift, te garantizamos productos de calidad que hacen la diferencia en la limpieza de tu entorno. Además, nuestra atención al cliente y compromiso con tu satisfacción hacen que cada compra sea una decisión acertada.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para el mapa -->
+    <div id="map" style="height: 70px; width: 100%;"></div>
+
+    <script>
+        // Función para inicializar el mapa
+        function initMap() {
+            // Coordenadas del centro del mapa (ejemplo: Obelisco, Buenos Aires, Argentina)
+            var myLatLng = { lat: -34.6037389, lng: -58.3815704 };
+
+            // Opciones del mapa
+            var mapOptions = {
+                zoom: 15,
+                center: myLatLng
+            };
+
+            // Crear el mapa
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            // Marcador en el mapa
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Ubicación de CleanSwift' // Título del marcador (opcional)
+            });
+        }
+    </script>
+
+    <!-- Incluir la API de Google Maps -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4644.319051054254!2d-58.3850750049737!3d-34.6034156661521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4aa9f0a6da5edb%3A0x11bead4e234e558b!2sObelisco!5e0!3m2!1ses!2sar!4v1719447478408!5m2!1ses!2sar"
+     width="1350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <!-- Iconos de redes sociales y teléfono -->
+    <div class="container text-center mt-4">
+        <ul class="list-inline">
+            <li class="list-inline-item mr-3">
+                <a href="#">
+                    <i class="fab fa-instagram fa-2x"></i> <!-- Icono de Instagram -->
+                </a>
+            </li>
+            <li class="list-inline-item mr-3">
+                <a href="#">
+                    <i class="fab fa-twitter fa-2x"></i> <!-- Icono de Twitter -->
+                </a>
+            </li>
+            <li class="list-inline-item mr-3">
+                <a href="#">
+                    <i class="fas fa-phone fa-2x"></i> <!-- Icono de teléfono -->
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#">
+                    <i class="fas fa-envelope fa-2x"></i> <!-- Icono de correo -->
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
